@@ -156,6 +156,10 @@ class Room(object):
    def addUser(self,email,pwd,fname,lname):
        print '-->in room.addUser'
        return self.__store.addUser(email,pwd,fname,lname)
+   
+   def updateUser(self, email, data):
+       print '-->in room.updateUser'
+       return self.__store.updateUser(email,data)
 
    def deleteUser(self, email):
        print '---> in delete user classroom..'

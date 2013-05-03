@@ -164,7 +164,6 @@ def addUser():
 
 #update User
 @route('/user/:email', method='PUT')
-
 def updateUser(email):
     print '---> moo.update user----->>>>'  
     data = json.loads(request.body.getvalue())

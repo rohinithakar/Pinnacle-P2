@@ -11,7 +11,7 @@
     <a href="{% url "homepage_contact" %}">contact</a>
 
 {% if login_status %}
-    <a href="{% url "updateUser/{ username }}" %}">Update Profile</a> -
+    <a href="{% url "updateUser" %}{{ username }}">Update Profile</a> -
     <a href="{% url 'logout' %}">Logout</a>
 
 {% else %}
@@ -36,6 +36,11 @@
     {% if createUser_status %}
         {{ data.msg }}<br/>     <!--or print direct msg that User is created-->
         <h3>Your account created. Please login to get access to our features</h3>
+    {% endif  %}
+
+    {% if updateUser_status %}
+        {{ data.msg }} <br/>
+        Welcome {{ username }}
     {% endif  %}
 
 	{% comment %}<h3>Entries:</h3>

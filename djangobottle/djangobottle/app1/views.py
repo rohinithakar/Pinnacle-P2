@@ -7,27 +7,27 @@ from djangobottle.app1.forms import ContactForm
 from djangobottle.app1.LoginForm import LoginForm
 from djangobottle.app1.createUserForm import createUserForm
 from djangobottle.app1.updateUserForm import updateUserForm
-from djangobottle.app1 import requestsUtil
 from bottle import route
 from json import loads, dumps
 import requests
 import json
+import ast
 
 
 def index(request):
     #return HttpResponse("Index Page")
     ctx = {}
-    return render_to_response('loggedOutIndex.html', ctx, context_instance=RequestContext(request))
+    return render_to_response('index.html', ctx, context_instance=RequestContext(request))
 
 
 def about(request):
     r = {'msg': 'fail'}
 
 
-    #r = requestsUtil.makeGetRequest("http://localhost:8080/moo/data/a@a.com")
-    #r1 = requestsUtil.makeDeleteRequest()
-    #r2 = requestsUtil.makePutRequest()
-    #r3 = requestsUtil.makePostRequest()
+    #r = requests.get("http://localhost:8080/moo/data/a@a.com")
+    #r1 = requests.delete()
+    #r2 = requests.put()
+    #r3 = requests.post()
 
     ctx = {'login_form': login_form}
     return render_to_response('about.html', ctx, context_instance=RequestContext(request))
@@ -43,12 +43,13 @@ def signIn(request):
             password = login_form.cleaned_data['password']
             request.session["contact_sent"] = True
             login_form_data = {'email': username, 'pwd': password}
-            r = requestsUtil.makePostRequest("auth", data=json.dumps(login_form_data))
+            r = requests.post("http://localhost:8080/auth", data=json.dumps(login_form_data))
             code = r.status_code
             if code == 200:
                 login_status = True
-                ctx = {'data': r.json(), 'error_status': error_status, 'login_status': login_status, 'username': username}
-                return render_to_response('loggedOutIndex.html', ctx, context_instance=RequestContext(request))
+                ctx = {'data': r.json(), 'error_status': error_status, 'login_status': login_status,
+                       'username': username}
+                return render_to_response('index.html', ctx, context_instance=RequestContext(request))
             elif code == 500:
                 error_status = True
                 ctx = {'login_form': login_form, 'error_status': error_status, 'error': r.json()}
@@ -67,7 +68,6 @@ def signIn(request):
 
 
 def createUser(request):
-
     error_status = False
     login_status = False
     createUser_status = False
@@ -80,16 +80,18 @@ def createUser(request):
             lname = createUser_form.cleaned_data['lname']
             request.session["contact_sent"] = True
             createUser_form_data = {'email': email, 'pwd': password, 'fname': fname, 'lname': lname}
-            r = requestsUtil.makePostRequest("user", data=json.dumps(createUser_form_data))
+            r = requests.post("http://localhost:8080/user", data=json.dumps(createUser_form_data))
             code = r.status_code
             if code == 201:
                 login_status = False
                 createUser_status = True
-                ctx = {'data': r.json(), 'error_status': error_status, 'createUser_status': createUser_status, 'login_status': login_status}
-                return render_to_response('loggedOutIndex.html', ctx, context_instance=RequestContext(request))
+                ctx = {'data': r.json(), 'error_status': error_status, 'createUser_status': createUser_status,
+                       'login_status': login_status}
+                return render_to_response('index.html', ctx, context_instance=RequestContext(request))
             elif code == 500:
                 error_status = True
-                ctx = {'createUser_form': createUser_form, 'error_status': error_status, 'error': 'Internal Error Occurs. Please try after sometime.'}
+                ctx = {'createUser_form': createUser_form, 'error_status': error_status,
+                       'error': 'Internal Error Occurs. Please try after sometime.'}
                 return render_to_response('createUser.html', ctx, context_instance=RequestContext(request))
             elif code == 409:
                 error_status = True
@@ -104,97 +106,67 @@ def createUser(request):
     return render_to_response('createUser.html', ctx, context_instance=RequestContext(request))
 
 
-def updateUser(request, username):
+def getUser(request, username):
+    if request.method == "POST":
+        updateUser(request)
 
     error_status = False
     updateUser_status = False
-    if request.method == "POST":
-        createUser_form = createUserForm(request.POST)
-        if createUser_form.is_valid():
-            email = createUser_form.cleaned_data['email']
-            password = createUser_form.cleaned_data['password']
-            fname = createUser_form.cleaned_data['fname']
-            lname = createUser_form.cleaned_data['lname']
-            request.session["contact_sent"] = True
-            createUser_form_data = {'email': email, 'pwd': password, 'fname': fname, 'lname': lname}
-            r = requestsUtil.makePostRequest("user", data=json.dumps(createUser_form_data))
-            code = r.status_code
-            if code == 201:
-                createUser_status = True
-                ctx = {'data': r.json(), 'error_status': error_status, 'createUser_status': createUser_status, 'login_status': login_status}
-                return render_to_response('loggedInIndex.html', ctx, context_instance=RequestContext(request))
-            elif code == 500:
-                error_status = True
-                ctx = {'createUser_form': createUser_form, 'error_status': error_status, 'error': 'Internal Error Occurs. Please try after sometime.'}
-                return render_to_response('createUser.html', ctx, context_instance=RequestContext(request))
-            elif code == 409:
-                error_status = True
-                ctx = {'createUser_form': createUser_form, 'error_status': error_status, 'error': r.json()}
-                return render_to_response('createUser.html', ctx, context_instance=RequestContext(request))
-
-    else:
-        r = requestsUtil.makeGetRequest("user/" % username)
-        data = r.json()
-        print 'email from data.json()'+data.email
-        print data.pwd
-        print data.fName
-        print data.lName
-
-        email = data.email
-        password = data.pwd
-        fname = data.fName
-        lname = data.lName
-        user_details = [{'email': email, 'password': password, 'fname': fname, 'lname': lname}]
-        updateUser_form = updateUserForm(user_details=user_details)
+    login_status = True
+    r = requests.get("http://localhost:8080/user/" + username)
+    data = ast.literal_eval(json.dumps(r.json()))
+    #print data
+    #print data['pwd']
+    #email = data['email']
+    #password = data['pwd']
+    #fname = data['fName']
+    #lname = data['lName']
+    user_details = {'email': data['email'], 'password': data['pwd'], 'fname': data['fName'], 'lname': data['lName']}
+    updateUser_form = updateUserForm(user_details)  #user_details, updateUser_form.__init__(user_details)
+    print 'after form obj created'
 
     ctx = {'updateUser_form': updateUser_form, 'error_status': error_status}
     return render_to_response('updateUser.html', ctx, context_instance=RequestContext(request))
 
 
+def updateUser(request):
+        #print 'in updateUser'
+        login_status = True
+        updateUser_form = updateUserForm(request.POST)
+        if updateUser_form.is_valid():
+            email = updateUser_form.cleaned_data['email']
+            password = updateUser_form.cleaned_data['password']
+            #print password, email
+            fname = updateUser_form.cleaned_data['fname']
+            lname = updateUser_form.cleaned_data['lname']
+            request.session["contact_sent"] = True
+            updateUser_form_data = {'email': email, 'pwd': password, 'fname': fname, 'lname': lname}
+            r = requests.put("http://localhost:8080/user/"+email, data=json.dumps(updateUser_form_data))
+            code = r.status_code
+            if code == 200:
+                error_status = False
+                updateUser_status = True
+
+                ctx = {'data': r.json(), 'error_status': error_status, 'updateUser_status': updateUser_status, 'login_status': login_status}
+                return render_to_response('index.html', ctx, context_instance=RequestContext(request))
+            elif code == 500:
+                error_status = True
+                ctx = {'updateUser_form': updateUser_form, 'error_status': error_status,'login_status': login_status, 'error': 'Internal Error Occurs. Please try after sometime.'}
+                return render_to_response('updateUser.html', ctx, context_instance=RequestContext(request))
+            elif code == 201:
+                error_status = True
+                ctx = {'updateUser_form': updateUser_form,'login_status': login_status, 'error_status': error_status, 'error': r.json()}
+                return render_to_response('updateUser.html', ctx, context_instance=RequestContext(request))
+
 
 def addCourse(request):
-
-    payload = {'name': 'electrical Engineering', 'Description': 'electrical engineering course', 'createDate': 'DATE', 'status': '0'}
-    r = requestsUtil.makePostRequest("course", data=json.dumps(payload))
+    payload = {'name': 'electrical Engineering', 'Description': 'electrical engineering course', 'createDate': 'DATE',
+               'status': '0'}
+    r = requests.post("http://localhost:8080/course", data=json.dumps(payload))
 
     ctx = r.json()
     return render_to_response('??.html', ctx, context_instance=RequestContext(request))
 
-def categoryAdd(request):
-    payload = {'name' : 'electrical Engineering', 'description' : 'electrical engineering course',
-               'createDate' : 'DATE', 'status' : '0'}
-    r = requests.post("http://localhost:8080/category", data = json.dumps(payload))
-    code = r.status_code
-    ctx = {'codevalue': code}
-    return render_to_response('about.html', ctx, context_instance=RequestContext(request))
-
-def categoryGet(request):
-    r = requests.get("http://localhost:8080/category/3")
-    ctx=r.json()
-    return render_to_response('about.html', ctx, context_instance=RequestContext(request))
-
-def categoryList(request):
-    r = requests.get("http://localhost:8080/category/list")
-    ctx=r.json()
-    return render_to_response('about.html', ctx, context_instance=RequestContext(request))
-
-def announcementAdd(request):
-    payload = {'courseId' : 'PinnacleCourse1', 'title' : 'due date for assignment',
-               'description' : 'due date is 15 may 2013', 'postDate' : 'DATE','status' : 0}
-    r = requests.post("http://localhost:8080/announcements", data = json.dumps(payload))
-    code = r.status_code
-    ctx = {'codevalue': code}
-    return render_to_response('about.html', ctx, context_instance=RequestContext(request))
-
-def announcementGet(request):
-    r = requests.get("http://localhost:8080/announcement/Pinnacleannouncement_1")
-    ctx=r.json()
-    return render_to_response('about.html', ctx, context_instance=RequestContext(request))
-
-def announcementList(request):
-    r = requests.get("http://localhost:8080/announcement/list")
-    ctx=r.json()
-    return render_to_response('about.html', ctx, context_instance=RequestContext(request))
 
 def contact(request):
     success = False
@@ -240,10 +212,11 @@ def logout(request):
     error_status = False
     login_status = False
     ctx = {'error_status': error_status, 'login_status': login_status}
-    return render_to_response('loggedOutIndex.html', ctx, context_instance=RequestContext(request))
+    return render_to_response('index.html', ctx, context_instance=RequestContext(request))
 
 
 @login_required
 def profile(request):
     ctx = {}
     return render_to_response('profile.html', ctx, context_instance=RequestContext(request))
+

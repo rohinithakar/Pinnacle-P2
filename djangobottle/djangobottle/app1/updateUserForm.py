@@ -11,13 +11,16 @@ class updateUserForm(forms.Form):
     lname = forms.CharField(required=True)
 
     def __init__(self, *args, **kwargs):
-        user_details = kwargs.pop('user_details', None)
+
+        #print kwargs
+        user_details = kwargs.get('user_details', None)
         super(updateUserForm, self).__init__(*args, **kwargs)
         if user_details:
             self.fields['email'].initial = user_details[0]['email']
             self.fields['password'].initial = user_details[1]['password']
             self.fields['fname'].initial = user_details[2]['fname']
             self.fields['lname'].initial = user_details[3]['lname']
+
 
     def clean_email(self):
         cd = self.cleaned_data

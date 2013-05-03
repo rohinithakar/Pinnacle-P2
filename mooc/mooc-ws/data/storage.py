@@ -57,7 +57,7 @@ class Storage(object):
       else:
          return None
      '''
-    #def for sign in
+    # def for sign in
     def auth(self, email, pwd):
         
         print "---> storage.find:", email
@@ -76,6 +76,7 @@ class Storage(object):
                 if strPwd == pwd:
                     print "Login Successfull"
                     msg = {'msg':'Login Successful'}
+                    #response.status = 
                     return msg
                 else:
                     response.status = 401
@@ -95,7 +96,7 @@ class Storage(object):
             print id                       
                          
             st = {"_Id":id}
-            c =   db.discussioncollection.find(st)
+            c = db.discussioncollection.find(st)
             print c.count()
             if c.count() > 0:
                 try:
@@ -127,7 +128,7 @@ class Storage(object):
             print id                       
                          
             st = {"_Id":id}
-            c =   db.announcementcollection.find(st)
+            c = db.announcementcollection.find(st)
             print c.count()
             if c.count() > 0:
                 try:
@@ -161,7 +162,7 @@ class Storage(object):
         c = db.discussioncollection.find(st).count()
         if c > 0:
             try:
-                db.discussioncollection.update(st,{'$set': body})
+                db.discussioncollection.update(st, {'$set': body})
                 response.status = 200
                 print "Delete announcement Success"
                 msg = {'msg':'Update discussion Successful'}
@@ -190,7 +191,7 @@ class Storage(object):
         c = db.annoucementcollection.find(st).count()
         if c > 0:
             try:
-                db.annoucementcollection.update(st,{'$set': body})
+                db.annoucementcollection.update(st, {'$set': body})
                 response.status = 200
                 print "Delete announcement Success"
                 msg = {'msg':'Update announcement Successful'}
@@ -212,14 +213,14 @@ class Storage(object):
            
         
     def getCourse(self, id):
-      print "---> storage.getCourse:",id
-      connection=Connection()
-      db=connection['cmpe275']
-      c=db.coursecollection.find({"_Id":id}).count()
-      print "Count-->",c
-      st={"_Id":id}
-      print "String-->",st
-      courseDetails=db.coursecollection.find(st)
+      print "---> storage.getCourse:", id
+      connection = Connection()
+      db = connection['cmpe275']
+      c = db.coursecollection.find({"_Id":id}).count()
+      print "Count-->", c
+      st = {"_Id":id}
+      print "String-->", st
+      courseDetails = db.coursecollection.find(st)
       print courseDetails.count()
       singleCourse = None
       for record in courseDetails:
@@ -251,13 +252,13 @@ class Storage(object):
      # Course list find 
     def listCourse(self):
         print "---> storage category listCourse.find:"
-        connection=Connection()
-        db=connection['cmpe275']
-        c=db.coursecollection.find().count()
-        print "Count-->",c
-        courseList=db.coursecollection.find()
+        connection = Connection()
+        db = connection['cmpe275']
+        c = db.coursecollection.find().count()
+        print "Count-->", c
+        courseList = db.coursecollection.find()
         print courseList.count()
-        lst=[]
+        lst = []
         for record in courseList:
             print "--> Inside Cursor"
             del record["_id"]
@@ -285,17 +286,17 @@ class Storage(object):
             print id
                            
             rowset1 = db.usercollection.find({'own':{'$all':[id]}})
-            email =  rowset1[0]['email']
-            result = db.usercollection.update({'email':email},{'$pull':{'own':id}})
+            email = rowset1[0]['email']
+            result = db.usercollection.update({'email':email}, {'$pull':{'own':id}})
             
             rowset2 = db.usercollection.find({'enrolled':{'$all':[id]}})
             for r in rowset2:
                 tempEmail = r['email']
                 print tempEmail
-                db.usercollection.update({'email':tempEmail},{'$pull':{'enrolled':id}})
+                db.usercollection.update({'email':tempEmail}, {'$pull':{'enrolled':id}})
                 
                 st = {"_Id":id}
-                c =   db.coursecollection.find(st)
+                c = db.coursecollection.find(st)
                 print c.count()
                 if c.count() > 0:
                     try:
@@ -327,7 +328,7 @@ class Storage(object):
         c = db.coursecollection.find(st).count()
         if c > 0:
             try:
-                db.coursecollection.update(st,{'$set': body})
+                db.coursecollection.update(st, {'$set': body})
                 response.status = 200
                 print "Delete announcement Success"
                 msg = {'msg':'Update course Successful'}
@@ -351,60 +352,78 @@ class Storage(object):
 
     #def for Create User
     def addUser(self,name,value,fname,lname):
-             connection=Connection()
-             db=connection['cmpe275']
-             c=db.usercollection.find({"email": name}).count()
-             print c
-             if c == 0:
-                 try:
-                     user={"email": name, "pwd": value , "fname": fname, "lname": lname}
-                     usercollection=db['usercollection']
-                     usercollection.insert(user)
-                     print "Successfully added"
-                     msg = {'msg':'Successfully added'}
-                     response.status = 201
-                     return msg  
-                 except:
-                     return "error: data not added"
-             else:
-                 response.status = 409
-                 print "Email already exists"
-                 msg = {'msg':'Email already exists'}
-                 return msg 
+         connection=Connection()
+         db=connection['cmpe275']
+         c=db.usercollection.find({"email": name}).count()
+         print c
+         if c == 0:
+             try:
+                 user={"email": name, "pwd": value , "fname": fname, "lname": lname}
+                 usercollection=db['usercollection']
+                 usercollection.insert(user)
+                 print "Successfully added"
+                 msg = {'msg':'Successfully added'}
+                 response.status = 201
+                 return msg  
+             except:
+                 response.status = 500
+                 return {'msg': 'Data not added'}
+         else:
+             response.status = 409
+             print "Email already exists"
+             msg = {'msg':'Email already exists'}
+             return msg
     
     #Update User
     def updateUser(self, email, body):
-             connection = Connection()
-             db = connection['cmpe275']
-             st = {"email":email}
-             c = db.usercollection.find(st).count()
-             print "Updateddd st " , st
-             print "Updateddd c" , c
-             print "Updateddd body" , body
-             
-             if c > 0:
-                 print db.usercollection.update(st,{ '$set' : body })
+         connection = Connection()
+         db = connection['cmpe275']
+         st = {"email":email}
+         c = db.usercollection.find(st).count()
+         print "Updateddd st " , st
+         print "Updateddd c" , c
+         print "Updateddd body" , body
+         
+         if c > 0:
+             #print db.usercollection.update(st,{ '$set' : body })
+             #for key,value in body:    #to add old password new password func.
+                #data = json.loads(key)
+             #oldpassword = db.usercollection.find(st,{'pwd':pwd})
+             #if data["oldpassword"] == oldpassword["pwd"]:
+                 #body = {'pwd': data['newpassword'], 'fName': data['fName'], 'lName': data['lName'] }
+                
                  db.usercollection.update(st,{ '$set' : body })
                  print "Updateddd"
-                 msg = {"msg":'User Updateddd'}
+                 msg = {"msg":'Existing User Updateddd'}
+                 response.status = 200
                  return msg
-             else:
-                 print "Nottt Updateddd"
-                 msg = {"msg":'User Not Updateddd'}
-                 return msg
+             
+         else:
+             print "No User Found. It will create new User."
+             for key,value in body:
+                data = json.loads(key)
+             msg = Storage.addUser(self, data['email'], data['newpassword'], data['fName'], data['lName'])
+             response.status = 201  
+             #msg = {"msg":'User Not Updateddd'}
+             return msg
     
     
-        #delete User 
+    #delete User 
     def deleteUser(self, email):
-            connection = Connection()
-            db = connection['cmpe275']
-            c = db.usercollection.find({"username":email}).count()
-            if c > 0:
-                st = {"username":email}
-                db.usercollection.remove(st)
-                return 'delete Success'
-            else:
-                 return 'email not found'
+        connection = Connection()
+        db = connection['cmpe275']
+        c = db.usercollection.find({"email":email}).count()
+        if c > 0:
+            st = {"email":email}
+            db.usercollection.remove(st)
+            response.status = 200
+            return {'msg':'Delete Success'}     #what about dependencies?? also log out n go to login page.
+        elif c == 0:
+             response.status = 404
+             return {'msg': 'Email not found'}
+        else:
+            response.status = 400
+            return {'msg': 'Bad Request. Please try again Later..'}
              
     def getUser(self, email):
         connection = Connection()
@@ -420,14 +439,32 @@ class Storage(object):
         else:
             return "No record found. Invalid Email Id"
         
-        if email > 0:
-            return record
+    def getUser(self, email):
+        connection = Connection()
+        db = connection['cmpe275']
+        c = db.usercollection.find({"email":email}).count()
+        if c > 0:
+            st = {"email":email}
+            records = db.usercollection.find(st)
+            for record in records:
+                del record["_id"]
+                json.dumps(record)
+                print "Record:", record
+                response.status = 200
+                return record
         else:
-            return None
+            response.status = 404
+            return {'msg': 'No record found. Invalid Email Id'}
+        
+        '''
+        if email <= 0:
+            response.status = 400
+            return {'msg': 'please insert email id. Bad Request'}   #what if other client do not provide validations
+        '''
      
     def addCourse(self, body):
-      #just run below query one time
-      #db.coursecollection.ensureIndex( { "courseId": 1 }, { unique: true } )
+        # just run below query one time
+        # db.coursecollection.ensureIndex( { "courseId": 1 }, { unique: true } )
         connection = Connection()
         db = connection['cmpe275']
         count = db.coursecollection.find().count()
@@ -437,24 +474,22 @@ class Storage(object):
             for key, value in body:
                 data = json.loads(key)
             print 'Description from storage:' + data['Description']
-            data['Description'] = "new course"
+            #data['Description'] = "new course"
             print data
-          #db.coursecollection
-          
-          #db.coursecollection.insert({ '$set' : data })
+            db.coursecollection.insert({ '$set' : data })
         except:
-            return "error: data not added"
+            return {'msg': 'data not added'}
 
 
-def catfind(self,id):
-      print "---> storage.find:",id
-      connection=Connection()
-      db=connection['cmpe275']
-      c=db.categorycollection.find({"categoryId":id}).count()
-      print "Count-->",c
-      st={"categoryId":id}
-      print "String-->",st
-      name1=db.categorycollection.find(st)
+    def catfind(self, id):
+      print "---> storage.find:", id
+      connection = Connection()
+      db = connection['cmpe275']
+      c = db.categorycollection.find({"categoryId":id}).count()
+      print "Count-->", c
+      st = {"categoryId":id}
+      print "String-->", st
+      name1 = db.categorycollection.find(st)
       print name1.count()
       for record in name1:
          print "--> Inside Cursor"
@@ -483,13 +518,13 @@ def catfind(self,id):
      
     def catlistfind(self):
       print "---> storage category list.find:"
-      connection=Connection()
-      db=connection['cmpe275']
-      c=db.categorycollection.find().count()
-      print "Count-->",c
-      name1=db.categorycollection.find()
+      connection = Connection()
+      db = connection['cmpe275']
+      c = db.categorycollection.find().count()
+      print "Count-->", c
+      name1 = db.categorycollection.find()
       print name1.count()
-      lst=[]
+      lst = []
       for record in name1:
          print "--> Inside Cursor"
          del record["_id"]
@@ -503,24 +538,24 @@ def catfind(self,id):
                 return json.dumps(lst)
             except:
                 response.status = 500
-                 print "Failed in listing category", sys.exc_info()
-                 msg = {'msg':'List category unsuccessful'}
-                 return msg
+                print "Failed in listing category", sys.exc_info()
+                msg = {'msg':'List category unsuccessful'}
+                return msg
       else:
             response.status = 500
             print "Failed in listing category", sys.exc_info()
             msg = {'msg':'List category unsuccessful'}
             return msg
      
-    def announcementfind(self,id):
-      print "---> announcement.find:",id
-      connection=Connection()
-      db=connection['cmpe275']
-      c=db.announcementcollection.find({"announceId":id}).count()
-      print "Count-->",c
-      st={"announceId":id}
-      print "String-->",st
-      name1=db.announcementcollection.find(st)
+    def announcementfind(self, id):
+      print "---> announcement.find:", id
+      connection = Connection()
+      db = connection['cmpe275']
+      c = db.announcementcollection.find({"announceId":id}).count()
+      print "Count-->", c
+      st = {"announceId":id}
+      print "String-->", st
+      name1 = db.announcementcollection.find(st)
       print name1.count()
       for record in name1:
          print "--> Inside Cursor"
@@ -547,15 +582,15 @@ def catfind(self,id):
               msg = {'msg':'announcement ID invaild'}
               return msg
      
-def announcementlistfind(self):
+    def announcementlistfind(self):
       print "---> storage announcement list.find:"
-      connection=Connection()
-      db=connection['cmpe275']
-      c=db.announcementcollection.find().count()
-      print "Count-->",c
-      name1=db.announcementcollection.find()
+      connection = Connection()
+      db = connection['cmpe275']
+      c = db.announcementcollection.find().count()
+      print "Count-->", c
+      name1 = db.announcementcollection.find()
       print name1.count()
-      lst=[]
+      lst = []
       for record in name1:
          print "--> Inside Cursor"
          del record["_id"]
@@ -578,51 +613,51 @@ def announcementlistfind(self):
             msg = {'msg':'List announcement unsuccessful'}
             return msg
      
-def announcementinsert(self,courseid,anntitle,anndesc,annpostdate,annstatus):
-    connection=Connection()
-    db=connection['cmpe275']
+    def announcementinsert(self, courseid, anntitle, anndesc, annpostdate, annstatus):
+        connection = Connection()
+        db = connection['cmpe275']
       
-      try:
+        try:
           print "now herennnnnnnnnn"
-          announcementcollection=db['announcementcollection']
+          announcementcollection = db['announcementcollection']
          
           count = db.announcementcollection.find().count()
           print "count is", count
-          newCount = count+1
+          newCount = count + 1
           
           print "new count is:", newCount
           newid = "Pinnacleannouncement_" + str(newCount)
           
           print "final id is", newid
           
-          announcement= {"announceId":newid, "courseId": courseid, "title": anntitle, "description": anndesc, "postDate": annpostdate, "status": annstatus}
+          announcement = {"announceId":newid, "courseId": courseid, "title": anntitle, "description": anndesc, "postDate": annpostdate, "status": annstatus}
           announcementcollection.insert(announcement)
           print "Successfully added"
-            msg = {'msg':'Successfully added'}
-            response.status = 201
-            return msg
-      except:
+          msg = {'msg':'Successfully added'}
+          response.status = 201
+          return msg
+        except:
             response.status = 500
             msg = {'msg':'Insert announcement unsuccessful'}
             return msg
              
         
      
-def catinsert(self,catname,catdesc,catcreatedate,catstatus):
-    connection=Connection()
-    db=connection['cmpe275']
-    c=db.usercollection.find({"name": catname}).count()
+def catinsert(self, catname, catdesc, catcreatedate, catstatus):
+    connection = Connection()
+    db = connection['cmpe275']
+    c = db.usercollection.find({"name": catname}).count()
     print c
     if c == 0:
         try:
-            categorycollection=db['categorycollection']
+            categorycollection = db['categorycollection']
             count = db.categorycollection.find().count()
             print "count is", count
-            newCount = count+1
+            newCount = count + 1
             print "new count is:", newCount
             newid = "Pinnaclecategory_" + str(newCount)
             print "final id is", newid
-            category= {"id":newid, "name": catname, "description": catdesc, "createDate": catcreatedate, "status": catstatus}
+            category = {"id":newid, "name": catname, "description": catdesc, "createDate": catcreatedate, "status": catstatus}
             categorycollection.insert(category)
             print "Successfully added"
             msg = {'msg':'Successfully added'}

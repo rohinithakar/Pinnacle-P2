@@ -97,7 +97,7 @@ class Storage(object):
             st = {"_Id":id}
             c =   db.discussioncollection.find(st)
             print c.count()
-            if c > 0:
+            if c.count() > 0:
                 try:
                     db.discussionCollection.remove(st)
                     response.status = 200
@@ -129,7 +129,7 @@ class Storage(object):
             st = {"_Id":id}
             c =   db.announcementcollection.find(st)
             print c.count()
-            if c > 0:
+            if c.count() > 0:
                 try:
                     db.announcementCollection.remove(st)
                     response.status = 200

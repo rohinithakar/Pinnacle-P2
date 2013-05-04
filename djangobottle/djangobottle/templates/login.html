@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+    {% if error_status %}
+
+	    <h3>Error Occurred: {{ error.msg }}</h3>
+
+    {% endif %}
+
+    <form action="." method="POST">
+	    {% csrf_token %}
+	    {{ login_form.as_p }}
+	    <input type="submit" value="login">
+	</form>
+
+{% endblock %}

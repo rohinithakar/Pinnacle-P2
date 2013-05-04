@@ -1,0 +1,7 @@
+status: 200
+content-length: 0
+content-location: http://localhost:8080/moo/data/foo
+server: WSGIServer/0.1 Python/2.7.3
+date: Fri, 26 Apr 2013 08:35:00 GMT
+content-type: text/html; charset=UTF-8
+

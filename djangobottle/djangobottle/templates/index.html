@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Index Page
+{% endblock %}
+
+{% block navi %}
+	<a href="{% url 'homepage_index' %}">home</a> -
+    <a href="{% url 'homepage_about' %}">about</a> -
+    <a href="{% url "homepage_archive" %}">archive</a> -
+    <a href="{% url "homepage_contact" %}">contact</a>
+
+{% if login_status %}
+	<a href="{% url 'homepage_profile' %}">Profile</a> -
+    <a href="{% url 'logout' %}">Logout</a>
+
+{% else %}
+	<a href="{% url 'signIn' %}">Login</a>
+    <a href="{% url 'createUser' %}">Create User</a>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div> This is main content Section...</div>
+    <br/>
+    Hi
+    <br/>
+
+    {% if login_status %}
+        {{ data.msg }} <br/>
+        Welcome {{ username }}
+    {% endif  %}
+
+    {% if createUser_status %}
+        {{ data.msg }}<br/>     <!--or print direct msg that User is created-->
+        <h3>Your account created. Please login to get access to our features</h3>
+    {% endif  %}
+
+	{% comment %}<h3>Entries:</h3>
+	
+	{% for e in entries %}
+		<div> {{ e.title }} - {{ e.created }} </div>
+			<div>{{ e.text }}</div>
+
+	<br/>
+	{% endfor %}{% endcomment %}
+
+{% endblock %}
+
+{% block footer%}
+	2013 - MyBlog -copyright
+{% endblock %}

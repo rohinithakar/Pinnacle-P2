@@ -1,0 +1,8 @@
+status: 200
+content-length: 40
+content-location: http://localhost:8080/moo/data/john
+server: WSGIServer/0.1 Python/2.7.3
+date: Sat, 27 Apr 2013 21:05:28 GMT
+content-type: application/json
+
+{"username": "john", "password": "gash"}

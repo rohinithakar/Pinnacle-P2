@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from djangobottle.app1.forms import ContactForm
 from djangobottle.app1.LoginForm import LoginForm
 from djangobottle.app1.createUserForm import createUserForm
+from djangobottle.app1.updateUserForm import updateUserForm
 from bottle import route
 from json import loads, dumps
 import requests
@@ -97,10 +98,57 @@ def createUser(request):
 
     else:
 
-        createUser_form = createUserForm(request.POST)
+        createUser_form = createUserForm()
 
     ctx = {'createUser_form': createUser_form, 'error_status': error_status}
     return render_to_response('createUser.html', ctx, context_instance=RequestContext(request))
+
+
+def updateUser(request, username):
+
+    error_status = False
+    updateUser_status = False
+    if request.method == "POST":
+        createUser_form = createUserForm(request.POST)
+        if createUser_form.is_valid():
+            email = createUser_form.cleaned_data['email']
+            password = createUser_form.cleaned_data['password']
+            fname = createUser_form.cleaned_data['fname']
+            lname = createUser_form.cleaned_data['lname']
+            request.session["contact_sent"] = True
+            createUser_form_data = {'email': email, 'pwd': password, 'fname': fname, 'lname': lname}
+            r = requests.post("http://localhost:8080/user", data=json.dumps(createUser_form_data))
+            code = r.status_code
+            if code == 201:
+                createUser_status = True
+                ctx = {'data': r.json(), 'error_status': error_status, 'createUser_status': createUser_status, 'login_status': login_status}
+                return render_to_response('index.html', ctx, context_instance=RequestContext(request))
+            elif code == 500:
+                error_status = True
+                ctx = {'createUser_form': createUser_form, 'error_status': error_status, 'error': 'Internal Error Occurs. Please try after sometime.'}
+                return render_to_response('createUser.html', ctx, context_instance=RequestContext(request))
+            elif code == 409:
+                error_status = True
+                ctx = {'createUser_form': createUser_form, 'error_status': error_status, 'error': r.json()}
+                return render_to_response('createUser.html', ctx, context_instance=RequestContext(request))
+
+    else:
+        r = requests.get("http://localhost:8080/user/" % username)
+        data = r.json()
+        print 'email from data.json()'+data.email
+        print data.pwd
+        print data.fName
+        print data.lName
+
+        email = data.email
+        password = data.pwd
+        fname = data.fName
+        lname = data.lName
+        user_details = [{'email': email, 'password': password, 'fname': fname, 'lname': lname}]
+        updateUser_form = updateUserForm(user_details=user_details)
+
+    ctx = {'updateUser_form': updateUser_form, 'error_status': error_status}
+    return render_to_response('updateUser.html', ctx, context_instance=RequestContext(request))
 
 
 

@@ -99,7 +99,7 @@ class Storage(object):
             print c.count()
             if c.count() > 0:
                 try:
-                    db.discussionCollection.remove(st)
+                    db.discussioncollection.remove(st)
                     response.status = 200
                     print "Delete discussion Success"
                     msg = {'msg':'Delete discussion Successful'}
@@ -131,7 +131,7 @@ class Storage(object):
             print c.count()
             if c.count() > 0:
                 try:
-                    db.announcementCollection.remove(st)
+                    db.announcementcollection.remove(st)
                     response.status = 200
                     print "Delete announcement Success"
                     msg = {'msg':'Delete announcement Successful'}
@@ -299,7 +299,7 @@ class Storage(object):
                 print c.count()
                 if c.count() > 0:
                     try:
-                        db.courseCollection.remove(st)
+                        db.coursecollection.remove(st)
                         response.status = 200
                         print "Delete course Success"
                         msg = {'msg':'Delete course Successful'}

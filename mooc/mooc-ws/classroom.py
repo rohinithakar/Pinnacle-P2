@@ -88,8 +88,7 @@ class Room(object):
    def deleteDiscussion(self, id):
           print '---> classroom discussion delete.find:'
           try:
-                self.__store.deleteDiscussion(id)
-                return 'success'
+              return self.__store.deleteDiscussion(id)
           except:
               e = sys.exc_info()[0]
               traceback.print_exc(file=sys.stdout)
@@ -100,9 +99,8 @@ class Room(object):
    #
    def deleteAnnouncement(self, id):
           print '---> classroom announcement delete.find:'
-          try:
-                self.__store.deleteAnnouncement(id)
-                return 'success'
+          try:                
+                return self.__store.deleteAnnouncement(id)
           except:
               e = sys.exc_info()[0]
               traceback.print_exc(file=sys.stdout)
@@ -119,8 +117,8 @@ class Room(object):
    def deleteCourse(self, id):
           print '---> classroom course delete.find:'
           try:
-                self.__store.deleteCourse(id)
-                return 'success'
+                
+                return self.__store.deleteCourse(id)
           except:
               e = sys.exc_info()[0]
               traceback.print_exc(file=sys.stdout)

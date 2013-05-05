@@ -11,7 +11,7 @@
     <a href="{% url "homepage_contact" %}">contact</a>
 
 {% if login_status %}
-	<a href="{% url 'homepage_profile' %}">Profile</a> -
+    <a href="{% url "updateUser/{ username }}" %}">Update Profile</a> -
     <a href="{% url 'logout' %}">Logout</a>
 
 {% else %}

@@ -191,6 +191,69 @@ def addCourse():
       #data = json.loads(key)
    return room.addCourse(k)
 
+#
+#Add category
+#
+@route('/category', method='POST')
+def catadd():
+   print '---> category.add'
+
+   # example list form values
+   k = request.forms.allitems()
+   for key,value in k:
+      data = json.loads(key)
+   return room.catadd(data['name'],data['description'],data['createDate'],data['status'])
+
+
+#
+# Find category
+#
+@route('/category/:id', method='GET')
+def catfind(id):
+   print '---> category.find:',id
+   return room.catfind(id)
+
+#
+# Find category list
+#
+@route('/category/list', method='GET')
+def catlistfind():
+   print '---> categorylist.find:'
+   return room.catlistfind()
+
+#
+#Add announcement
+#
+@route('/announcements', method='POST')
+def announcementadd():
+   print '---> announcement.add'
+
+   # example list form values
+   k = request.forms.allitems()
+   for key,value in k:
+      data = json.loads(key)
+   return room.announcementadd(data['courseId'],data['title'],data['description'],data['postDate'],data['status'])
+
+
+
+#
+# Find announcement
+#
+@route('/announcement/:id', method='GET')
+def announcementfind(id):
+   print '---> announcement find:',id
+   return room.announcementfind(id)
+
+
+#
+# Find announcement list
+#
+@route('/announcement/list', method='GET')
+def announcementlistfind():
+   print '---> announcementlist.find:'
+   return room.announcementlistfind()
+
+
 @route('/moo/data/test', method='POST')
 def testForm():
    print '---> moo.testForm'

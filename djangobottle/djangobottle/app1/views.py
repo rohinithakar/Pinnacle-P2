@@ -112,6 +112,41 @@ def addCourse(request):
     ctx = r.json()
     return render_to_response('??.html', ctx, context_instance=RequestContext(request))
 
+def categoryAdd(request):
+    payload = {'name' : 'electrical Engineering', 'description' : 'electrical engineering course',
+               'createDate' : 'DATE', 'status' : '0'}
+    r = requests.post("http://localhost:8080/category", data = json.dumps(payload))
+    code = r.status_code
+    ctx = {'codevalue': code}
+    return render_to_response('about.html', ctx, context_instance=RequestContext(request))
+
+def categoryGet(request):
+    r = requests.get("http://localhost:8080/category/3")
+    ctx=r.json()
+    return render_to_response('about.html', ctx, context_instance=RequestContext(request))
+
+def categoryList(request):
+    r = requests.get("http://localhost:8080/category/list")
+    ctx=r.json()
+    return render_to_response('about.html', ctx, context_instance=RequestContext(request))
+
+def announcementAdd(request):
+    payload = {'courseId' : 'PinnacleCourse1', 'title' : 'due date for assignment',
+               'description' : 'due date is 15 may 2013', 'postDate' : 'DATE','status' : 0}
+    r = requests.post("http://localhost:8080/announcements", data = json.dumps(payload))
+    code = r.status_code
+    ctx = {'codevalue': code}
+    return render_to_response('about.html', ctx, context_instance=RequestContext(request))
+
+def announcementGet(request):
+    r = requests.get("http://localhost:8080/announcement/Pinnacleannouncement_1")
+    ctx=r.json()
+    return render_to_response('about.html', ctx, context_instance=RequestContext(request))
+
+def announcementList(request):
+    r = requests.get("http://localhost:8080/announcement/list")
+    ctx=r.json()
+    return render_to_response('about.html', ctx, context_instance=RequestContext(request))
 
 def contact(request):
     success = False

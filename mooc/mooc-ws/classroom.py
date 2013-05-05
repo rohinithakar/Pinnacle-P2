@@ -169,6 +169,58 @@ class Room(object):
    def addCourse(self, body):
        print '---> in add Course classroom'
        return self.__store.addCourse(body)
+
+#
+   # category find 
+   #
+   def catfind(self,id):
+      print '---> classroomcategory.find:',id
+      return self.__store.catfind(id)
+
+   #
+   # category list find 
+   #
+   def catlistfind(self):
+      print '---> classroom category list.find:'
+      return self.__store.catlistfind()
+
+   #
+   # Category add data
+   #
+   def catadd(self,catname,catdesc,catcreatedate,catstatus):
+      try:
+         self.__store.catinsert(catname,catdesc,catcreatedate,catstatus)
+         self.__store.names();
+         return 'success'
+      except:
+         return 'failed'
+
+   #
+   # announcement find 
+   #
+   def announcementfind(self,id):
+      print '---> classroom.announcementfind:',id
+      return self.__store.announcementfind(id)
+
+   #
+   # announcement list find 
+   #
+   def announcementlistfind(self):
+      print '---> classroom announcement list.find:'
+      return self.__store.announcementlistfind()
+
+
+   #
+   # announcement add data
+   #
+   def announcementadd(self,courseid,anntitle,anndesc,annpostdate,annstatus):
+      try:
+         self.__store.announcementinsert(courseid,anntitle,anndesc,annpostdate,annstatus)
+         self.__store.names();
+         return 'success'
+      except:
+         return 'failed'
+
          
       # TODO success|failure
 

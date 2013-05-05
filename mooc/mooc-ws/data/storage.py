@@ -446,6 +446,199 @@ class Storage(object):
             return "error: data not added"
 
 
+def catfind(self,id):
+      print "---> storage.find:",id
+      connection=Connection()
+      db=connection['cmpe275']
+      c=db.categorycollection.find({"categoryId":id}).count()
+      print "Count-->",c
+      st={"categoryId":id}
+      print "String-->",st
+      name1=db.categorycollection.find(st)
+      print name1.count()
+      for record in name1:
+         print "--> Inside Cursor"
+         del record["_id"]
+         json.dumps(record)
+         print "Record:", record
+      if c > 0:
+          try:
+              response.status = 200
+              print "Get category Success"
+              return record
+          except:
+              response.status = 500
+              print "Failed in getting category", sys.exc_info()
+              msg = {'msg':'Get category unsuccessful'}
+              return msg                    
+      else:
+          try:
+              response.status = 404
+              msg = {'msg':'category ID not found'}
+              return msg
+          except:
+              response.status = 400
+              msg = {'msg':'category ID invaild'}
+              return msg
+     
+    def catlistfind(self):
+      print "---> storage category list.find:"
+      connection=Connection()
+      db=connection['cmpe275']
+      c=db.categorycollection.find().count()
+      print "Count-->",c
+      name1=db.categorycollection.find()
+      print name1.count()
+      lst=[]
+      for record in name1:
+         print "--> Inside Cursor"
+         del record["_id"]
+         lst.append(record)
+         print "Record:", record
+     
+      if c > 0:
+            try:
+                response.status = 200
+                print "List category Success"
+                return json.dumps(lst)
+            except:
+                response.status = 500
+                 print "Failed in listing category", sys.exc_info()
+                 msg = {'msg':'List category unsuccessful'}
+                 return msg
+      else:
+            response.status = 500
+            print "Failed in listing category", sys.exc_info()
+            msg = {'msg':'List category unsuccessful'}
+            return msg
+     
+    def announcementfind(self,id):
+      print "---> announcement.find:",id
+      connection=Connection()
+      db=connection['cmpe275']
+      c=db.announcementcollection.find({"announceId":id}).count()
+      print "Count-->",c
+      st={"announceId":id}
+      print "String-->",st
+      name1=db.announcementcollection.find(st)
+      print name1.count()
+      for record in name1:
+         print "--> Inside Cursor"
+         del record["_id"]
+         json.dumps(record)
+         print "Record:", record
+      if c > 0:
+          try:
+              response.status = 200
+              print "Get announcement Success"
+              return record
+          except:
+              response.status = 500
+              print "Failed in getting announcement", sys.exc_info()
+              msg = {'msg':'Get announcement unsuccessful'}
+              return msg                    
+      else:
+          try:
+              response.status = 404
+              msg = {'msg':'annoncement ID not found'}
+              return msg
+          except:
+              response.status = 400
+              msg = {'msg':'announcement ID invaild'}
+              return msg
+     
+def announcementlistfind(self):
+      print "---> storage announcement list.find:"
+      connection=Connection()
+      db=connection['cmpe275']
+      c=db.announcementcollection.find().count()
+      print "Count-->",c
+      name1=db.announcementcollection.find()
+      print name1.count()
+      lst=[]
+      for record in name1:
+         print "--> Inside Cursor"
+         del record["_id"]
+         lst.append(record)
+         print "Record:", record
+      
+      if c > 0:
+            try:
+                response.status = 200
+                print "List announcement Success"
+                return json.dumps(lst)
+            except:
+                 response.status = 500
+                 print "Failed in listing announcement", sys.exc_info()
+                 msg = {'msg':'List announcement unsuccessful'}
+                 return msg
+      else:
+            response.status = 500
+            print "Failed in listing announcement", sys.exc_info()
+            msg = {'msg':'List announcement unsuccessful'}
+            return msg
+     
+def announcementinsert(self,courseid,anntitle,anndesc,annpostdate,annstatus):
+    connection=Connection()
+    db=connection['cmpe275']
+      
+      try:
+          print "now herennnnnnnnnn"
+          announcementcollection=db['announcementcollection']
+         
+          count = db.announcementcollection.find().count()
+          print "count is", count
+          newCount = count+1
+          
+          print "new count is:", newCount
+          newid = "Pinnacleannouncement_" + str(newCount)
+          
+          print "final id is", newid
+          
+          announcement= {"announceId":newid, "courseId": courseid, "title": anntitle, "description": anndesc, "postDate": annpostdate, "status": annstatus}
+          announcementcollection.insert(announcement)
+          print "Successfully added"
+            msg = {'msg':'Successfully added'}
+            response.status = 201
+            return msg
+      except:
+            response.status = 500
+            msg = {'msg':'Insert announcement unsuccessful'}
+            return msg
+             
+        
+     
+def catinsert(self,catname,catdesc,catcreatedate,catstatus):
+    connection=Connection()
+    db=connection['cmpe275']
+    c=db.usercollection.find({"name": catname}).count()
+    print c
+    if c == 0:
+        try:
+            categorycollection=db['categorycollection']
+            count = db.categorycollection.find().count()
+            print "count is", count
+            newCount = count+1
+            print "new count is:", newCount
+            newid = "Pinnaclecategory_" + str(newCount)
+            print "final id is", newid
+            category= {"id":newid, "name": catname, "description": catdesc, "createDate": catcreatedate, "status": catstatus}
+            categorycollection.insert(category)
+            print "Successfully added"
+            msg = {'msg':'Successfully added'}
+            response.status = 201
+            return msg
+        except:
+            msg = {'msg':'Insert category unsuccessful'}
+            response.status = 500
+            return msg
+
+    else:
+         response.status = 409
+         print "category already exists"
+         msg = {'msg':'Category already exists'}
+         return msg
+
 
 
 

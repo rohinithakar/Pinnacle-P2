@@ -10,6 +10,7 @@ from djangobottle.app1.updateUserForm import updateUserForm
 from bottle import route
 from json import loads, dumps
 import requests
+from djangobottle.app1 import requestsUtil
 import json
 import ast
 
@@ -24,10 +25,11 @@ def about(request):
     r = {'msg': 'fail'}
 
 
-    #r = requests.get("http://localhost:8080/moo/data/a@a.com")
-    #r1 = requests.delete()
-    #r2 = requests.put()
-    #r3 = requests.post()
+    #r = requestsUtil.makeGetRequest("http://localhost:8080/moo/data/a@a.com")
+    #r1 = requestsUtil.makeDeleteRequest()
+    #r2 = requestsUtil.makePutRequest()
+    #r3 = requestsUtil.makePostRequest()
+    login_form = LoginForm(request.POST)
 
     ctx = {'login_form': login_form}
     return render_to_response('about.html', ctx, context_instance=RequestContext(request))
@@ -43,7 +45,7 @@ def signIn(request):
             password = login_form.cleaned_data['password']
             request.session["contact_sent"] = True
             login_form_data = {'email': username, 'pwd': password}
-            r = requests.post("http://localhost:8080/auth", data=json.dumps(login_form_data))
+            r = requestsUtil.makePostRequest("auth", data=json.dumps(login_form_data))
             code = r.status_code
             if code == 200:
                 login_status = True
@@ -80,7 +82,7 @@ def createUser(request):
             lname = createUser_form.cleaned_data['lname']
             request.session["contact_sent"] = True
             createUser_form_data = {'email': email, 'pwd': password, 'fname': fname, 'lname': lname}
-            r = requests.post("http://localhost:8080/user", data=json.dumps(createUser_form_data))
+            r = requestsUtil.makePostRequest("user", data=json.dumps(createUser_form_data))
             code = r.status_code
             if code == 201:
                 login_status = False
@@ -113,7 +115,7 @@ def getUser(request, username):
     error_status = False
     updateUser_status = False
     login_status = True
-    r = requests.get("http://localhost:8080/user/" + username)
+    r = requestsUtil.makeGetRequest("user/" + username)
     data = ast.literal_eval(json.dumps(r.json()))
     #print data
     #print data['pwd']
@@ -141,7 +143,7 @@ def updateUser(request):
             lname = updateUser_form.cleaned_data['lname']
             request.session["contact_sent"] = True
             updateUser_form_data = {'email': email, 'pwd': password, 'fname': fname, 'lname': lname}
-            r = requests.put("http://localhost:8080/user/"+email, data=json.dumps(updateUser_form_data))
+            r = requestsUtil.makePutRequest("user/"+email, data=json.dumps(updateUser_form_data))
             code = r.status_code
             if code == 200:
                 error_status = False
@@ -162,7 +164,7 @@ def updateUser(request):
 def addCourse(request):
     payload = {'name': 'electrical Engineering', 'Description': 'electrical engineering course', 'createDate': 'DATE',
                'status': '0'}
-    r = requests.post("http://localhost:8080/course", data=json.dumps(payload))
+    r = requestsUtil.makePostRequest("course", data=json.dumps(payload))
 
     ctx = r.json()
     return render_to_response('??.html', ctx, context_instance=RequestContext(request))

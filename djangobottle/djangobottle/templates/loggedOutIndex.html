@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Index Page
+{% endblock %}
+
+{% block navi %}
+	<a href="{% url 'homepage_index' %}">home</a>
+
+	<a href="{% url 'signIn' %}">Login</a>
+    <a href="{% url 'createUser' %}">Create User</a>
+
+{% endblock %}
+
+{% block content %}
+
+    <div> This is main content Section...</div>
+    <br/>
+    Hi
+    <br/>
+
+    {% if createUser_status %}
+        {{ data.msg }}<br/>     <!--or print direct msg that User is created-->
+        <h3>Your account created. Please login to get access to our features</h3>
+    {% endif  %}
+
+{% endblock %}

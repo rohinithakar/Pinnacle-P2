@@ -18,7 +18,7 @@ import ast
 def index(request):
     #return HttpResponse("Index Page")
     ctx = {}
-    return render_to_response('index.html', ctx, context_instance=RequestContext(request))
+    return render_to_response('loggedOutIndex.html', ctx, context_instance=RequestContext(request))
 
 
 def about(request):
@@ -51,7 +51,7 @@ def signIn(request):
                 login_status = True
                 ctx = {'data': r.json(), 'error_status': error_status, 'login_status': login_status,
                        'username': username}
-                return render_to_response('index.html', ctx, context_instance=RequestContext(request))
+                return render_to_response('loggedInIndex.html', ctx, context_instance=RequestContext(request))
             elif code == 500:
                 error_status = True
                 ctx = {'login_form': login_form, 'error_status': error_status, 'error': r.json()}
@@ -89,7 +89,7 @@ def createUser(request):
                 createUser_status = True
                 ctx = {'data': r.json(), 'error_status': error_status, 'createUser_status': createUser_status,
                        'login_status': login_status}
-                return render_to_response('index.html', ctx, context_instance=RequestContext(request))
+                return render_to_response('loggedInIndex.html', ctx, context_instance=RequestContext(request))
             elif code == 500:
                 error_status = True
                 ctx = {'createUser_form': createUser_form, 'error_status': error_status,
@@ -150,7 +150,7 @@ def updateUser(request):
                 updateUser_status = True
 
                 ctx = {'data': r.json(), 'error_status': error_status, 'updateUser_status': updateUser_status, 'login_status': login_status}
-                return render_to_response('index.html', ctx, context_instance=RequestContext(request))
+                return render_to_response('loggedInIndex.html', ctx, context_instance=RequestContext(request))
             elif code == 500:
                 error_status = True
                 ctx = {'updateUser_form': updateUser_form, 'error_status': error_status,'login_status': login_status, 'error': 'Internal Error Occurs. Please try after sometime.'}
@@ -214,7 +214,7 @@ def logout(request):
     error_status = False
     login_status = False
     ctx = {'error_status': error_status, 'login_status': login_status}
-    return render_to_response('index.html', ctx, context_instance=RequestContext(request))
+    return render_to_response('loggedOutIndex.html', ctx, context_instance=RequestContext(request))
 
 
 @login_required

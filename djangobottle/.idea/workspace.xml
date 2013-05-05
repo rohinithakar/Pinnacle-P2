@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/djangobottle/templates/index.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangobottle/app1/views.py" afterPath="$PROJECT_DIR$/djangobottle/app1/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="djangobottle.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367784609227" ignored="false" />
+    <file path="/Dummy.txt" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367785025134" ignored="false" />
     <file path="/settings.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367739014016" ignored="false" />
     <file path="/urls.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367742374190" ignored="false" />
     <file path="/models.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367741970007" ignored="false" />
     <file path="/admin.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367739983628" ignored="false" />
-    <file path="/views.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367784870908" ignored="false" />
+    <file path="/views.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367785088558" ignored="false" />
     <file path="/base.html" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367744010661" ignored="false" />
     <file path="/index.html" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367744052057" ignored="false" />
     <file path="/utils.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367746262025" ignored="false" />
@@ -47,19 +48,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/djangobottle/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/djangobottle/app1/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="34" selection-start="5802" selection-end="5802" vertical-scroll-proportion="0.2005044">
+            <state line="199" column="48" selection-start="8613" selection-end="8613" vertical-scroll-proportion="0.45550352">
               <folding>
                 <element signature="e#64#111#0" expanded="true" />
               </folding>
@@ -87,6 +79,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
     <option name="myDateState">
       <MyDateState />
     </option>
@@ -351,13 +344,19 @@
       <created>1367042760233</created>
       <updated>1367042760233</updated>
     </task>
+    <task id="LOCAL-00001" summary="Updated data">
+      <created>1367785029199</created>
+      <updated>1367785029200</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1040" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -418,7 +417,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated data" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -432,6 +431,7 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="Updated data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -509,13 +509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangobottle/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/djangobottle/app1/requestsUtil.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="63" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0">
@@ -534,7 +527,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/djangobottle/app1/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="34" selection-start="5802" selection-end="5802" vertical-scroll-proportion="0.2005044">
+        <state line="199" column="48" selection-start="8613" selection-end="8613" vertical-scroll-proportion="0.45550352">
           <folding>
             <element signature="e#64#111#0" expanded="true" />
           </folding>

@@ -12,7 +12,8 @@ if len(sys.argv) > 2:
   conf_fn = sys.argv[2]
   setup(base,conf_fn)
 
-  run(host='localhost', port=8080)
+  run(host='0.0.0.0', port=8080)
+  #run(host='localhost', port=8080)
 else:
   print "usage:", sys.argv[0],"[base_dir] [conf file]"
 

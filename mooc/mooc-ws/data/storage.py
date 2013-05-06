@@ -89,6 +89,37 @@ class Storage(object):
             print msg
             return msg  
         
+    def catinsert(self, catname, catdesc, catcreatedate, catstatus):
+        print 'sweta: in storage -> category add'
+        connection = Connection()
+        db = connection['cmpe275']
+        c = db.usercollection.find({"name": catname}).count()
+        print c
+        if c == 0:
+            try:
+                categorycollection = db['categorycollection']
+                count = db.categorycollection.find().count()
+                print "count is", count
+                newCount = count + 1
+                print "new count is:", newCount
+                newid = "Pinnaclecategory_" + str(newCount)
+                print "final id is", newid
+                category = {"id":newid, "name": catname, "description": catdesc, "createDate": catcreatedate, "status": catstatus}
+                categorycollection.insert(category)
+                print "Successfully added"
+                msg = {'msg':'Successfully added'}
+                response.status = 201
+                return msg
+            except:
+                msg = {'msg':'Insert category unsuccessful'}
+                response.status = 500
+                return msg
+        else:
+            response.status = 409
+            print "category already exists"
+            msg = {'msg':'Category already exists'}
+            return msg
+        
     def deleteDiscussion(self, id):
             connection = Connection()
             db = connection['cmpe275']
@@ -515,7 +546,7 @@ class Storage(object):
               response.status = 400
               msg = {'msg':'category ID invaild'}
               return msg
-     
+          
     def catlistfind(self):
       print "---> storage category list.find:"
       connection = Connection()
@@ -643,36 +674,7 @@ class Storage(object):
              
         
      
-def catinsert(self, catname, catdesc, catcreatedate, catstatus):
-    connection = Connection()
-    db = connection['cmpe275']
-    c = db.usercollection.find({"name": catname}).count()
-    print c
-    if c == 0:
-        try:
-            categorycollection = db['categorycollection']
-            count = db.categorycollection.find().count()
-            print "count is", count
-            newCount = count + 1
-            print "new count is:", newCount
-            newid = "Pinnaclecategory_" + str(newCount)
-            print "final id is", newid
-            category = {"id":newid, "name": catname, "description": catdesc, "createDate": catcreatedate, "status": catstatus}
-            categorycollection.insert(category)
-            print "Successfully added"
-            msg = {'msg':'Successfully added'}
-            response.status = 201
-            return msg
-        except:
-            msg = {'msg':'Insert category unsuccessful'}
-            response.status = 500
-            return msg
 
-    else:
-         response.status = 409
-         print "category already exists"
-         msg = {'msg':'Category already exists'}
-         return msg
 
 
 

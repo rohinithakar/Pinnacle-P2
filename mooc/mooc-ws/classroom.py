@@ -174,7 +174,7 @@ class Room(object):
        print '---> in add Course classroom'
        return self.__store.addCourse(body)
 
-#
+   #
    # category find 
    #
    def catfind(self,id):
@@ -193,6 +193,12 @@ class Room(object):
    #
    def catadd(self,catname,catdesc,catcreatedate,catstatus):
       try:
+         print 'sweta: in classroom -> category add'
+         print 'details:', catname
+         print 'details:', catdesc
+         print 'details:', catcreatedate
+         print 'details:', catstatus
+         
          self.__store.catinsert(catname,catdesc,catcreatedate,catstatus)
          self.__store.names();
          return 'success'

@@ -195,7 +195,7 @@ def addCourse():
 #
 @route('/category', method='POST')
 def catadd():
-   print '---> category.add'
+   print '---> sweta : in moo -> category.add'
 
    # example list form values
    k = request.forms.allitems()

@@ -186,13 +186,12 @@ def listCourses(request):
 
 def getCourse(request, courseId):
     print "get Course"
-    if request.method() == 'GET':
+    if request.method == 'GET':
         r = requestsUtil.makeGetRequest("course/"+courseId)
         code = r.status_code
         if code == 200:
             error_status = False
             ctx = {'data': r.json(), 'error_status': error_status}
-            print r.json()
             return render_to_response('getCourse.html',ctx,context_instance=RequestContext(request))
 
 def updateUser(request):

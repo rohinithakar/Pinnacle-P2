@@ -247,9 +247,9 @@ class Storage(object):
       print "---> storage.getCourse:", id
       connection = Connection()
       db = connection['cmpe275']
-      c = db.coursecollection.find({"_Id":id}).count()
+      c = db.coursecollection.find({"id":id}).count()
       print "Count-->", c
-      st = {"_Id":id}
+      st = {"id":id}
       print "String-->", st
       courseDetails = db.coursecollection.find(st)
       print courseDetails.count()

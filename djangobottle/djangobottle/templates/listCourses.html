@@ -11,7 +11,7 @@
     {% endif %}
     <table>
     {% for course in data %}
-        <tr><td><a href={%  url 'getCourse' %}{{ course.title }}</a></td></tr>
+        <tr><td><a href='{% url 'getCourse' courseId=course.id %}'>{{ course.title }}</a> </td></tr>
     {% endfor %}
     </table>
 

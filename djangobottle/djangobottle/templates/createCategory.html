@@ -1,0 +1,17 @@
+{% extends 'loggedOutIndex.html' %}
+
+{% block content %}
+
+    {% if error_status %}
+
+	    <h3>Error Occurred: {{ error.msg }}</h3>
+
+    {% endif %}
+
+    <form action="." method="POST">
+	    {% csrf_token %}
+	    {{ createCategory_form.as_p }}
+	    <input type="submit" value="Create">
+	</form>
+
+{% endblock %}

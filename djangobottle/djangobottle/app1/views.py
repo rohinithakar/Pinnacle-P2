@@ -7,6 +7,7 @@ from djangobottle.app1.forms import ContactForm
 from djangobottle.app1.LoginForm import LoginForm
 from djangobottle.app1.createUserForm import createUserForm
 from djangobottle.app1.updateUserForm import updateUserForm
+from djangobottle.app1.createCategoryForm import createCategoryForm
 from bottle import route
 from json import loads, dumps
 import requests
@@ -106,6 +107,47 @@ def createUser(request):
 
     ctx = {'createUser_form': createUser_form, 'error_status': error_status}
     return render_to_response('createUser.html', ctx, context_instance=RequestContext(request))
+
+def createCategory(request):
+    error_status = False
+    login_status = False
+    createCategory_status = False
+    if request.method == "POST":
+        createCategory_form = createCategoryForm(request.POST)
+        if createCategory_form.is_valid():
+            name = createCategory_form.cleaned_data['name']
+            description = createCategory_form.cleaned_data['description']
+            createDate = createCategory_form.cleaned_data['createDate']
+            status = createCategory_form.cleaned_data['status']
+            request.session["contact_sent"] = True
+            createCategory_form_data = {'name' : name, 'description' : description,
+               'createDate' : createDate, 'status' : status}
+            r = requestsUtil.makePostRequest("category", data=json.dumps(createCategory_form_data))
+            code = r.status_code
+            print 'create category code value', code
+            if code == 201:
+                print 'In 201 area'
+                login_status = False
+                createCategory_status = True
+                ctx = {'error_status': error_status, 'createCategory_status': createCategory_status}
+                return render_to_response('success.html', ctx, context_instance=RequestContext(request))
+            elif code == 500:
+                error_status = True
+                ctx = {'createCategory_form': createCategory_form, 'error_status': error_status,
+                       'error': 'Internal Error Occurs. Please try after sometime.'}
+                return render_to_response('createCategory.html', ctx, context_instance=RequestContext(request))
+            elif code == 409:
+                error_status = True
+                ctx = {'createCategory_form': createCategory_form, 'error_status': error_status, 'error': r.json()}
+                return render_to_response('createCategory.html', ctx, context_instance=RequestContext(request))
+
+    else:
+
+        createCategory_form = createCategoryForm()
+
+    ctx = {'createCategory_form': createCategory_form, 'error_status': error_status}
+    return render_to_response('createCategory.html', ctx, context_instance=RequestContext(request))
+
 
 
 def getUser(request, username):

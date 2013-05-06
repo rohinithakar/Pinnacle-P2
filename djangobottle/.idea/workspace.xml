@@ -2,25 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangobottle/app1/courseForm.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangobottle/templates/getCourse.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangobottle/templates/listCourses.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django.db" afterPath="$PROJECT_DIR$/django.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangobottle/templates/createCategory.html" afterPath="$PROJECT_DIR$/djangobottle/templates/createCategory.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/djangobottle.iml" afterPath="$PROJECT_DIR$/.idea/djangobottle.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../mooc/mooc-ws/classroom.py" afterPath="$PROJECT_DIR$/../mooc/mooc-ws/classroom.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangobottle/templates/loggedInIndex.html" afterPath="$PROJECT_DIR$/djangobottle/templates/loggedInIndex.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../mooc/mooc-ws/moo.py" afterPath="$PROJECT_DIR$/../mooc/mooc-ws/moo.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../mooc/mooc-ws/data/storage.py" afterPath="$PROJECT_DIR$/../mooc/mooc-ws/data/storage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangobottle/templates/success.html" afterPath="$PROJECT_DIR$/djangobottle/templates/success.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangobottle/app1/urls.py" afterPath="$PROJECT_DIR$/djangobottle/app1/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangobottle/app1/views.py" afterPath="$PROJECT_DIR$/djangobottle/app1/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="djangobottle.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367798600327" ignored="false" />
+    <file path="/Dummy.txt" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367803357836" ignored="false" />
     <file path="/settings.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367739014016" ignored="false" />
-    <file path="/urls.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367795599981" ignored="false" />
+    <file path="/urls.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367806394788" ignored="false" />
     <file path="/models.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367741970007" ignored="false" />
     <file path="/admin.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367739983628" ignored="false" />
-    <file path="/views.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367798172947" ignored="false" />
+    <file path="/views.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367806399057" ignored="false" />
     <file path="/base.html" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367744010661" ignored="false" />
     <file path="/index.html" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367744052057" ignored="false" />
     <file path="/utils.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367746262025" ignored="false" />
@@ -28,6 +29,10 @@
     <file path="/createCategoryForm.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367796006324" ignored="false" />
     <file path="/createCategory.html" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367795763380" ignored="false" />
     <file path="/temp.html" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367797911120" ignored="false" />
+    <file path="/loggedInIndex.html" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367806580854" ignored="false" />
+    <file path="/courseForm.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367805552582" ignored="false" />
+    <file path="/getCourse.html" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367805739678" ignored="false" />
+    <file path="/listCourses.html" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367806836470" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +55,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangobottle/app1/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="27" selection-start="5752" selection-end="5752" vertical-scroll-proportion="0.0">
+            <state line="177" column="25" selection-start="7919" selection-end="7919" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#64#111#0" expanded="true" />
               </folding>
@@ -58,28 +63,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createCategoryForm.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/djangobottle/app1/createCategoryForm.py">
+      <file leaf-file-name="listCourses.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangobottle/templates/listCourses.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="34" selection-start="192" selection-end="192" vertical-scroll-proportion="0.2504638">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/djangobottle/app1/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="82" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createUser.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/djangobottle/templates/createUser.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="305" vertical-scroll-proportion="0.0">
+            <state line="13" column="68" selection-start="298" selection-end="298" vertical-scroll-proportion="-8.125">
               <folding />
             </state>
           </provider>
@@ -88,7 +75,63 @@
       <file leaf-file-name="createCategory.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangobottle/templates/createCategory.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="30" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0">
+            <state line="11" column="8" selection-start="189" selection-end="205" vertical-scroll-proportion="-6.875">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getCourse.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangobottle/templates/getCourse.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="42" selection-start="277" selection-end="277" vertical-scroll-proportion="-8.125">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="courseForm.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangobottle/app1/courseForm.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="0" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loggedInIndex.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangobottle/templates/loggedInIndex.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="34" selection-start="152" selection-end="171" vertical-scroll-proportion="-5.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/djangobottle/app1/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="3" selection-start="1397" selection-end="1397" vertical-scroll-proportion="0.5444965">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createUser.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangobottle/templates/createUser.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="0" selection-start="306" selection-end="306" vertical-scroll-proportion="-10.625">
+              <folding>
+                <marker date="1367746568000" expanded="true" signature="183:288" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createCategoryForm.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangobottle/app1/createCategoryForm.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="0" selection-start="28" selection-end="1122" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -113,30 +156,29 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/djangobottle/templates/index.html" />
-        <option value="$PROJECT_DIR$/djangobottle/templates/base.html" />
-        <option value="$PROJECT_DIR$/djangobottle/templates/loggedInIndex.html" />
-        <option value="$PROJECT_DIR$/djangobottle/templates/loggedOutIndex.html" />
-        <option value="$PROJECT_DIR$/djangobottle/templates/createUser.html" />
         <option value="$PROJECT_DIR$/djangobottle/templates/login.html" />
         <option value="$PROJECT_DIR$/djangobottle/app1/utils.py" />
         <option value="$PROJECT_DIR$/djangobottle/app1/requestsUtil.py" />
         <option value="$PROJECT_DIR$/djangobottle/settings.py" />
         <option value="$PROJECT_DIR$/djangobottle/app1/data/createCategoryForm.py" />
-        <option value="$PROJECT_DIR$/djangobottle/app1/urls.py" />
-        <option value="$PROJECT_DIR$/djangobottle/templates/createCategory.html" />
         <option value="$PROJECT_DIR$/djangobottle/app1/createCategoryForm.py" />
         <option value="$PROJECT_DIR$/djangobottle/templates/temp.html" />
         <option value="$PROJECT_DIR$/djangobottle/templates/success.html" />
+        <option value="$PROJECT_DIR$/djangobottle/app1/data/courseForm.py" />
+        <option value="$PROJECT_DIR$/djangobottle/app1/courseForm.py" />
+        <option value="$PROJECT_DIR$/djangobottle/templates/createCategory.html" />
+        <option value="$PROJECT_DIR$/djangobottle/templates/getCourse.html" />
+        <option value="$PROJECT_DIR$/djangobottle/app1/urls.py" />
         <option value="$PROJECT_DIR$/djangobottle/app1/views.py" />
+        <option value="$PROJECT_DIR$/djangobottle/templates/loggedInIndex.html" />
+        <option value="$PROJECT_DIR$/djangobottle/templates/listCourses.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="40" />
-    <option name="y" value="22" />
+    <option name="x" value="-1" />
     <option name="width" value="1922" />
-    <option name="height" value="685" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -164,6 +206,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -254,18 +297,39 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djangobottle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djangobottle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djangobottle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -278,6 +342,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/djangobottle/templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/djangobottle/app1" />
     </key>
   </component>
   <component name="RunManager">
@@ -386,14 +453,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="40" y="22" width="1922" height="685" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1" y="0" width="1922" height="1040" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13965885" sideWeight="0.67081445" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14117648" sideWeight="0.8701299" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -472,37 +539,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/djangobottle/templates/createCategory.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="30" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangobottle/app1/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="24" selection-start="8160" selection-end="8160" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#64#111#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangobottle/app1/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="13" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangobottle/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="41" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangobottle/templates/contact.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/djangobottle/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="26" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0" />
@@ -520,35 +556,9 @@
         <state line="10" column="0" selection-start="0" selection-end="1333" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangobottle/templates/createUser.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="305" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangobottle/templates/createCategory.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="30" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangobottle/app1/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="82" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/djangobottle/templates/about.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="278" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangobottle/templates/loggedInIndex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="72" selection-end="72" vertical-scroll-proportion="0.14705883" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/djangobottle/templates/success.html">
@@ -556,18 +566,83 @@
         <state line="6" column="17" selection-start="82" selection-end="82" vertical-scroll-proportion="0.1764706" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangobottle/app1/views.py">
+    <entry file="file://$PROJECT_DIR$/djangobottle/templates/createUser.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="27" selection-start="5752" selection-end="5752" vertical-scroll-proportion="0.0">
+        <state line="17" column="0" selection-start="306" selection-end="306" vertical-scroll-proportion="-10.625">
           <folding>
-            <element signature="e#64#111#0" expanded="true" />
+            <marker date="1367746568000" expanded="true" signature="183:288" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/djangobottle/app1/createCategoryForm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="34" selection-start="192" selection-end="192" vertical-scroll-proportion="0.2504638">
+        <state line="53" column="0" selection-start="28" selection-end="1122" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/forms/fields.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="350" column="6" selection-start="14418" selection-end="14418" vertical-scroll-proportion="0.3325527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangobottle/app1/courseForm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangobottle/app1/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="25" selection-start="7919" selection-end="7919" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#64#111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangobottle/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangobottle/templates/getCourse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="42" selection-start="277" selection-end="277" vertical-scroll-proportion="-8.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangobottle/templates/loggedInIndex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="34" selection-start="152" selection-end="171" vertical-scroll-proportion="-5.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangobottle/templates/createCategory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="8" selection-start="189" selection-end="205" vertical-scroll-proportion="-6.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangobottle/templates/listCourses.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="68" selection-start="298" selection-end="298" vertical-scroll-proportion="-8.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangobottle/app1/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="3" selection-start="1397" selection-end="1397" vertical-scroll-proportion="0.5444965">
           <folding />
         </state>
       </provider>

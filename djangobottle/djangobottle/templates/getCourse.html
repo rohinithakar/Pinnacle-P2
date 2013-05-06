@@ -10,8 +10,8 @@
 
     <form action="." method="POST">
 	    {% csrf_token %}
-	    {{ createCategory_form.as_p }}
-	    <input type="submit" value="Create">
+	    {{ get_course_form.as_p }}
+	    <input type="submit" value="Update">
 	</form>
 
 {% endblock %}

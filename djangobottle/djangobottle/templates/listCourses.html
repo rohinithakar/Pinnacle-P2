@@ -1,0 +1,18 @@
+{% extends 'loggedInIndex.html' %}
+
+{% block title %} Courses {% endblock %}
+
+{% block content %}
+
+    {% if error_status %}
+
+	    <h3>Error Occurred: {{ error.msg }}</h3>
+
+    {% endif %}
+    <table>
+    {% for course in data %}
+        <tr><td><a href={%  url 'getCourse' %}{{ course.title }}</a></td></tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

@@ -174,20 +174,17 @@ def getUser(request, username):
 
 
 def listCourses(request):
-    print "list Course"
     if request.method == 'GET':
-        r = requestsUtil.makeGetRequest("course/list")
+        r = requestsUtil.getCourseList()
         code = r.status_code
         if code == 200:
             error_status = False
             ctx = {'data': r.json(), 'error_status': error_status}
-            print r.json()
             return render_to_response('listCourses.html',ctx,context_instance=RequestContext(request))
 
 def getCourse(request, courseId):
-    print "get Course"
     if request.method == 'GET':
-        r = requestsUtil.makeGetRequest("course/"+courseId)
+        r = requestsUtil.getCourse(courseId)
         code = r.status_code
         if code == 200:
             error_status = False

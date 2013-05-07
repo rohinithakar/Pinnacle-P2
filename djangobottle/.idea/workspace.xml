@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" name="Default" comment="" />
+    <list default="true" id="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangobottle/media/img/MOOCbetterwordbubble.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangobottle/templates/loggedOutIndex.html" afterPath="$PROJECT_DIR$/djangobottle/templates/loggedOutIndex.html" />
+    </list>
     <ignored path="djangobottle.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367826749278" ignored="false" />
+    <file path="/Dummy.txt" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367897702920" ignored="false" />
     <file path="/settings.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367739014016" ignored="false" />
     <file path="/urls.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367806394788" ignored="false" />
     <file path="/models.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367741970007" ignored="false" />
@@ -22,6 +25,7 @@
     <file path="/getCourse.html" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367812959627" ignored="false" />
     <file path="/listCourses.html" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367810168559" ignored="false" />
     <file path="/requestsUtil.py" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367819786833" ignored="false" />
+    <file path="/loggedOutIndex.html" changelist="da0d0c6b-dc38-49e2-b6ea-a6c8f272ae09" time="1367898019318" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,13 +54,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requestsUtil.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="requestsUtil.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangobottle/app1/requestsUtil.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="100" column="24" selection-start="2622" selection-end="2622" vertical-scroll-proportion="0.43333334">
+            <state line="100" column="24" selection-start="2622" selection-end="2622" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#23#38#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loggedOutIndex.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/djangobottle/templates/loggedOutIndex.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="0" selection-start="582" selection-end="582" vertical-scroll-proportion="0.43373495">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangobottle/templates/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="72" selection-start="140" selection-end="167" vertical-scroll-proportion="-2.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangobottle/templates/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,7 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/djangobottle/templates/login.html" />
         <option value="$PROJECT_DIR$/djangobottle/app1/utils.py" />
         <option value="$PROJECT_DIR$/djangobottle/settings.py" />
         <option value="$PROJECT_DIR$/djangobottle/app1/data/createCategoryForm.py" />
@@ -141,14 +171,14 @@
         <option value="$PROJECT_DIR$/djangobottle/templates/getCourse.html" />
         <option value="$PROJECT_DIR$/djangobottle/app1/views.py" />
         <option value="$PROJECT_DIR$/djangobottle/app1/requestsUtil.py" />
+        <option value="$PROJECT_DIR$/djangobottle/templates/loggedOutIndex.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-1" />
-    <option name="y" value="24" />
     <option name="width" value="1922" />
-    <option name="height" value="936" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -244,6 +274,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djangobottle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djangobottle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djangobottle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -298,8 +350,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -423,14 +475,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="24" width="1922" height="936" extended-state="6" />
+    <frame x="-1" y="0" width="1922" height="1040" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1459893" sideWeight="0.67081445" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2090909" sideWeight="0.40151516" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -509,16 +561,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/djangobottle/templates/createUser.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangobottle/app1/createCategoryForm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="28" selection-end="1122" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python2.7/dist-packages/django/forms/fields.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="350" column="6" selection-start="14418" selection-end="14418" vertical-scroll-proportion="0.3325527" />
@@ -529,11 +571,6 @@
         <state line="15" column="0" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangobottle/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/djangobottle/templates/loggedInIndex.html">
@@ -598,10 +635,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/djangobottle/app1/requestsUtil.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="24" selection-start="2622" selection-end="2622" vertical-scroll-proportion="0.43333334">
+        <state line="100" column="24" selection-start="2622" selection-end="2622" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#23#38#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangobottle/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangobottle/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="72" selection-start="140" selection-end="167" vertical-scroll-proportion="-2.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangobottle/templates/loggedOutIndex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="582" selection-end="582" vertical-scroll-proportion="0.43373495">
+          <folding />
         </state>
       </provider>
     </entry>

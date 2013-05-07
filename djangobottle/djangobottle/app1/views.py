@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from djangobottle.app1.forms import ContactForm
 from djangobottle.app1.LoginForm import LoginForm
 from djangobottle.app1.createUserForm import createUserForm
+from djangobottle.app1.forms import MoocForm
 from djangobottle.app1.updateUserForm import updateUserForm
 from djangobottle.app1.createCategoryForm import createCategoryForm
 from bottle import route
@@ -21,15 +22,17 @@ def index(request):
     ctx = {}
     return render_to_response('loggedOutIndex.html', ctx, context_instance=RequestContext(request))
 
-def login_index(request):
-    r = requestsUtil.getCategoryList()
+def login_index(request, teamName=None):
+    if teamName != None:
+        request.session['teamName'] = teamName
+    r = requestsUtil.getCategoryList(request.session['teamName'])
     code = r.status_code
     ctx = {}
     if code == 200:
         data = ast.literal_eval(json.dumps(r.json()))
         print 'data is', data
         error_status = False
-        ctx = {'data': data, 'error_status': error_status}
+        ctx = {'data': data, 'error_status': error_status,"mooc_select":MoocForm(request.session['teamName'])}
     return render_to_response('loggedInIndex.html', ctx, context_instance=RequestContext(request))
 
 def about(request):
@@ -59,6 +62,7 @@ def signIn(request):
             r = requestsUtil.makePostRequest("auth", data=json.dumps(login_form_data))
             code = r.status_code
             if code == 200:
+                request.session["username"]=username
                 login_status = True
                 return login_index(request)
             elif code == 500:
@@ -97,7 +101,7 @@ def createUser(request):
                 login_status = False
                 createUser_status = True
                 ctx = {'data': r.json(), 'error_status': error_status, 'createUser_status': createUser_status,
-                       'login_status': login_status}
+                       'login_status': login_status,"mooc_select":MoocForm(request.session['teamName'])}
                 return render_to_response('loggedInIndex.html', ctx, context_instance=RequestContext(request))
             elif code == 500:
                 error_status = True
@@ -158,14 +162,14 @@ def createCategory(request):
 
 
 
-def getUser(request, username):
+def getUser(request):
     if request.method == "POST":
         updateUser(request)
 
     error_status = False
     updateUser_status = False
     login_status = True
-    r = requestsUtil.makeGetRequest("user/" + username)
+    r = requestsUtil.makeGetRequest("user/" + request.session["username"])
     data = ast.literal_eval(json.dumps(r.json()))
     #print data
     #print data['pwd']
@@ -183,16 +187,16 @@ def getUser(request, username):
 
 def listCourses(request):
     if request.method == 'GET':
-        r = requestsUtil.getCourseList()
+        r = requestsUtil.getCourseList(request.session['teamName'])
         code = r.status_code
         if code == 200:
             error_status = False
-            ctx = {'data': r.json(), 'error_status': error_status}
+            ctx = {'data': r.json(), 'error_status': error_status, "mooc_select":MoocForm(request.session['teamName'])}
             return render_to_response('listCourses.html',ctx,context_instance=RequestContext(request))
 
 def getCourse(request, courseId):
     if request.method == 'GET':
-        r = requestsUtil.getCourse(courseId)
+        r = requestsUtil.getCourse(courseId,request.session['teamName'])
         code = r.status_code
         if code == 200:
             error_status = False
@@ -201,7 +205,7 @@ def getCourse(request, courseId):
 
 def listCategories(request):
     if request.method == 'GET':
-        r = requestsUtil.getCategoryList()
+        r = requestsUtil.getCategoryList(request.session['teamName'])
         code = r.status_code
         if code == 200:
             data = ast.literal_eval(json.dumps(r.json()))
@@ -212,7 +216,7 @@ def listCategories(request):
 
 def getCategory(request, categoryId):
     if request.method == 'GET':
-        r = requestsUtil.getCategory(categoryId)
+        r = requestsUtil.getCategory(categoryId,request.session['teamName'])
         code = r.status_code
         if code == 200:
             error_status = False
@@ -236,7 +240,7 @@ def updateUser(request):
             if code == 200:
                 error_status = False
                 updateUser_status = True
-                ctx = {'data': r.json(), 'error_status': error_status, 'updateUser_status': updateUser_status, 'login_status': login_status}
+                ctx = {'data': r.json(), 'error_status': error_status, 'updateUser_status': updateUser_status, 'login_status': login_status,"mooc_select":MoocForm(request.session['teamName'])}
                 return render_to_response('loggedInIndex.html', ctx, context_instance=RequestContext(request))
             elif code == 500:
                 error_status = True

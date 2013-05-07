@@ -1,5 +1,5 @@
 from django import forms
-
+from models import MoocInstance
 
 class ContactForm(forms.Form):
     email = forms.EmailField()
@@ -37,3 +37,9 @@ class ContactForm(forms.Form):
 
         return cd
 
+
+class MoocForm(forms.Form):
+    def __init__(self, default=None, *args, **kwargs):
+        super(MoocForm, self).__init__(*args, **kwargs)
+        self.fields['moocs'] = forms.ChoiceField(widget = forms.Select(),
+                     choices = ([(o.team_name, str(o.team_name)) for o in MoocInstance.objects.all()]), initial=default,)

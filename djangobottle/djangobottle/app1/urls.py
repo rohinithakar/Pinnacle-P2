@@ -6,6 +6,7 @@ from django.contrib.auth.views import login, logout
 urlpatterns = django.conf.urls.patterns('djangobottle.app1.views',
 
  django.conf.urls.url(r'^$', 'index', name='homepage_index'),
+ django.conf.urls.url(r'^home/(?P<teamName>.*)/$', 'login_index', name='login_index'),
  django.conf.urls.url(r'^home/$', 'login_index', name='login_index'),
  django.conf.urls.url(r'^about/$', 'about', name='homepage_about'),
  django.conf.urls.url(r'^contact/$', 'contact', name='homepage_contact'),
@@ -19,7 +20,7 @@ urlpatterns = django.conf.urls.patterns('djangobottle.app1.views',
  django.conf.urls.url(r'^CreateUser/$', 'createUser', name='createUser'),
  django.conf.urls.url(r'^CreateCategory/$', 'createCategory', name='createCategory'),
  django.conf.urls.url(r'^updateUser/$', 'updateUser', name='updateUser'),
- django.conf.urls.url(r'^updateUser/(?P<username>.*)$', 'getUser', name='updateUser'),
+ django.conf.urls.url(r'^getUser/$', 'getUser', name='getUser'),
  django.conf.urls.url(r'^logout/$', 'logout', name='logout'),
 )
 

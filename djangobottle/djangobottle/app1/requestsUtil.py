@@ -12,11 +12,6 @@ Use the method over here instead of requests.post, requests.get
 default_mooc_url = "http://localhost:8080/"
 mooc_map = None
 
-def getCourse(courseId):
-    mooc_url = __getMoocUrl(courseId)
-    return __makeGetRequest(mooc_url + "course/"+courseId)
-
-
 def makePostRequest(url, data=None, **kwargs):
     return __makePostRequest(default_mooc_url + url, data=data, **kwargs)
 
@@ -31,32 +26,28 @@ def makeDeleteRequest(url, **kwargs):
 
 
 def getMoocList():
+    __generateMoocMap()
     return mooc_map
+
+def getCourse(courseId,teamName=None):
+    mooc_url = __getMoocUrl(teamName)
+    return __makeGetRequest(mooc_url + "course/"+courseId)
 
 # Get course list from default mooc or from mooc with moocId
 def getCourseList(teamName=None):
-    if teamName == None:
-        return makeGetRequest("course/list")
-    else:
-        if mooc_map[teamName] == None:
-            return makeGetRequest("course/list")
-        else:
-            return __makeGetRequest(mooc_map[teamName] + "course/list")
+    mooc_url = __getMoocUrl(teamName)
+    return __makeGetRequest(mooc_url + "course/list")
 
-def getCategory(categoryId):
-    mooc_url = __getMoocUrl(categoryId)
+def getCategory(categoryId,teamName=None):
+    mooc_url = __getMoocUrl(teamName)
     return __makeGetRequest(mooc_url + "category/"+categoryId)
+
 
 # Get category list from default mooc or from mooc with moocId
 def getCategoryList(teamName=None):
-    if teamName == None:
-        return makeGetRequest("category/list")
-    else:
-        if mooc_map[teamName] == None:
-            return makeGetRequest("category/list")
-        else:
-            return __makeGetRequest(mooc_map[teamName] + "category/list")
-
+    mooc_url = __getMoocUrl(teamName)
+    print "url: " + mooc_url
+    return __makeGetRequest(mooc_url + "category/list")
 
 '''
 Helper methods that are private
@@ -98,16 +89,14 @@ def __makeDeleteRequest(url, **kwargs):
 
 
 
-def __getMoocUrl(objectId):
-    if objectId==None:
+def __getMoocUrl(teamName=None):
+    if teamName==None:
         return default_mooc_url
-    if mooc_map == None:
-        __generateMoocMap()
-    moocId = __getMoocIdFromId(objectId)
-    if mooc_map[moocId]==None:
+    __generateMoocMap()
+    if mooc_map[teamName]==None:
         return default_mooc_url
     else:
-        return mooc_map[moocId]
+        return mooc_map[teamName]
 
 # This populates mooc_map if it is none
 def __generateMoocMap():

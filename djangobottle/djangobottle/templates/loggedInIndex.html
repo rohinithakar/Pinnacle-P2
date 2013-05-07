@@ -1,10 +1,25 @@
 {% extends "base.html" %}
 
 {% block title %} Categories {% endblock %}
-
+{% block js %}
+<script src="{{ MEDIA_URL }}js/prototype.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+document.observe("dom:loaded", function() {
+  Event.observe($("id_moocs"),'change', function(e){
+      teamName = e.srcElement.options[e.srcElement.selectedIndex].value;
+      console.warn(teamName);
+      window.location.href = '{% url 'login_index' %}' + teamName+'/';
+  });
+});
+</script>
+{% endblock %}
 {% block navi %}
-	<a href="{% url 'login_index' %}">home</a>
-    <a href="{% url 'listCourses' %}">Get Courses</a>
+	<a href="{% url 'login_index' %}">Home</a>
+    <a href="{% url 'login_index' %}">Add Course</a>
+    <a href="{% url 'listCourses' %}">List Courses</a>
+    <a href="{% url 'getUser' %}">User Profile</a>
+    {{ mooc_select }}
     <a href="{% url 'logout' %}">Logout</a>
 
 {% endblock %}
@@ -14,12 +29,15 @@
     {% if error_status %}
 
 	    <h3>Error Occurred: {{ error.msg }}</h3>
-
-    {% endif %}
+    {% else %}
     <table>
     {% for category in data %}
         <tr><td><a href='{% url 'getCategory' categoryId=category.id %}'>{{ category.name }}</a> </td></tr>
     {% endfor %}
     </table>
+    <a href="{% url 'createCategory' %}">Create Category</a>
+
+    {% endif %}
+
 
 {% endblock %}

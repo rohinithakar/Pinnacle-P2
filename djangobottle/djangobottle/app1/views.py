@@ -134,7 +134,8 @@ def createCategory(request):
             request.session["contact_sent"] = True
             createCategory_form_data = {'name' : name, 'description' : description,
                'createDate' : createDate, 'status' : status}
-            r = requestsUtil.makePostRequest("category", data=json.dumps(createCategory_form_data))
+            #r = requestsUtil.makePostRequest("category", data=json.dumps(createCategory_form_data))
+            r = requestsUtil.createCategory(json.dumps(createCategory_form_data), request.session['teamName'])
             code = r.status_code
             print 'create category code value', code
             if code == 201:

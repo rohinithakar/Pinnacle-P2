@@ -245,11 +245,13 @@ class Storage(object):
         
     def getCourse(self, id):
       print "---> storage.getCourse:", id
+      objid = ObjectId(id)
+      print 'new id is:', id
       connection = Connection()
       db = connection['cmpe275']
-      c = db.coursecollection.find({"id":id}).count()
+      c = db.coursecollection.find({"_id":objid}).count()
       print "Count-->", c
-      st = {"id":id}
+      st = {"_id":objid}
       print "String-->", st
       courseDetails = db.coursecollection.find(st)
       print courseDetails.count()
@@ -257,6 +259,7 @@ class Storage(object):
       for record in courseDetails:
          print "--> Inside Cursor"
          del record["_id"]
+         record["id"] = id
          json.dumps(record)
          print "Record:", record
          singleCourse = record
@@ -292,9 +295,13 @@ class Storage(object):
         lst = []
         for record in courseList:
             print "--> Inside Cursor"
+            temp = record["_id"]
+            temp = str(temp)
+            print "temp value is", temp
+            #record["_id"] = temp
             del record["_id"]
+            record["id"] = temp
             lst.append(record)
-            print "Record:", record
         if c > 0:
             try:
                 response.status = 200

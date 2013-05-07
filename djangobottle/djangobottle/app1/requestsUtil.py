@@ -49,6 +49,10 @@ def getCategoryList(teamName=None):
     print "url: " + mooc_url
     return __makeGetRequest(mooc_url + "category/list")
 
+def createCategory(jsonData, teamName=None):
+    mooc_url = __getMoocUrl(teamName)
+    return __makePostRequest(mooc_url + "category", data=jsonData)
+
 '''
 Helper methods that are private
 '''

@@ -1,13 +1,6 @@
-{% extends "base.html" %}
+{% extends 'loggedInIndex.html' %}
 
 {% block title %} Categories {% endblock %}
-
-{% block navi %}
-	<a href="{% url 'login_index' %}">home</a>
-    <a href="{% url 'listCourses' %}">Get Courses</a>
-    <a href="{% url 'logout' %}">Logout</a>
-
-{% endblock %}
 
 {% block content %}
 

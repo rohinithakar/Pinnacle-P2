@@ -43,7 +43,19 @@ def getCourseList(teamName=None):
         else:
             return __makeGetRequest(mooc_map[teamName] + "course/list")
 
+def getCategory(categoryId):
+    mooc_url = __getMoocUrl(categoryId)
+    return __makeGetRequest(mooc_url + "category/"+categoryId)
 
+# Get category list from default mooc or from mooc with moocId
+def getCategoryList(teamName=None):
+    if teamName == None:
+        return makeGetRequest("category/list")
+    else:
+        if mooc_map[teamName] == None:
+            return makeGetRequest("category/list")
+        else:
+            return __makeGetRequest(mooc_map[teamName] + "category/list")
 
 
 '''

@@ -1,0 +1,17 @@
+{% extends 'loggedInIndex.html' %}
+
+{% block content %}
+
+    {% if error_status %}
+
+            <h3>Error Occurred: {{ error.msg }}</h3>
+
+    {% endif %}
+
+
+   <p>Category Name: {{ data.name }} </p>
+   <p>Description: {{ data.description }} </p>
+   <p>Create Date: {{ data.createDate }} </p>
+   <p>Status: {{ data.status}} </p>
+
+{% endblock %}

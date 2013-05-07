@@ -21,6 +21,16 @@ def index(request):
     ctx = {}
     return render_to_response('loggedOutIndex.html', ctx, context_instance=RequestContext(request))
 
+def login_index(request):
+    r = requestsUtil.getCategoryList()
+    code = r.status_code
+    ctx = {}
+    if code == 200:
+        data = ast.literal_eval(json.dumps(r.json()))
+        print 'data is', data
+        error_status = False
+        ctx = {'data': data, 'error_status': error_status}
+    return render_to_response('loggedInIndex.html', ctx, context_instance=RequestContext(request))
 
 def about(request):
     r = {'msg': 'fail'}
@@ -50,9 +60,7 @@ def signIn(request):
             code = r.status_code
             if code == 200:
                 login_status = True
-                ctx = {'data': r.json(), 'error_status': error_status, 'login_status': login_status,
-                       'username': username}
-                return render_to_response('loggedInIndex.html', ctx, context_instance=RequestContext(request))
+                return login_index(request)
             elif code == 500:
                 error_status = True
                 ctx = {'login_form': login_form, 'error_status': error_status, 'error': r.json()}
@@ -191,6 +199,26 @@ def getCourse(request, courseId):
             ctx = {'data': r.json(), 'error_status': error_status}
             return render_to_response('getCourse.html',ctx,context_instance=RequestContext(request))
 
+def listCategories(request):
+    if request.method == 'GET':
+        r = requestsUtil.getCategoryList()
+        code = r.status_code
+        if code == 200:
+            data = ast.literal_eval(json.dumps(r.json()))
+            print 'data is', data
+            error_status = False
+            ctx = {'data': data, 'error_status': error_status}
+            return render_to_response('listCategories.html',ctx,context_instance=RequestContext(request))
+
+def getCategory(request, categoryId):
+    if request.method == 'GET':
+        r = requestsUtil.getCategory(categoryId)
+        code = r.status_code
+        if code == 200:
+            error_status = False
+            ctx = {'data': r.json(), 'error_status': error_status}
+            return render_to_response('getCategory.html',ctx,context_instance=RequestContext(request))
+
 def updateUser(request):
         #print 'in updateUser'
         login_status = True
@@ -208,7 +236,6 @@ def updateUser(request):
             if code == 200:
                 error_status = False
                 updateUser_status = True
-
                 ctx = {'data': r.json(), 'error_status': error_status, 'updateUser_status': updateUser_status, 'login_status': login_status}
                 return render_to_response('loggedInIndex.html', ctx, context_instance=RequestContext(request))
             elif code == 500:
